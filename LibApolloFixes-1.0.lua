@@ -14,8 +14,6 @@ local Lib = APkg and APkg.tPackage or {}
 
 -- Will contain an array of strings, the names of all Addons available loaded or not.
 local tAddonList = {}
--- Read-Only proxy table for returning to requestors
-local tAddonRO = setmetatable({}, { __index = tAddonList, __newindex = function(t,k,v) return end })
 
 -- Use already stored original LoadForm in case of upgrade or get reference to the original LoadForm
 Lib.fnOldLoadForm = Lib.fnOldLoadForm or Apollo.LoadForm
