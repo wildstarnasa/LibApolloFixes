@@ -21,7 +21,7 @@ local tAddonRO = setmetatable({}, { __index = tAddonList, __newindex = function(
 Lib.fnOldLoadForm = Lib.fnOldLoadForm or Apollo.LoadForm
 -- This is the number of elements in the table below it, used to determine if XML has been read in GetAddons()
 local nNumObscured = 27
--- This list should be comprehensive as of 
+-- This list should be comprehensive as of 1.0.8.6745
 -- Format is: ["FormName"] = "AddonName"
 Lib.tObscuredAddons = Lib.tObscuredAddons or {
 	["ImprovedSalvageForm"] = "ImprovedSalvage",
