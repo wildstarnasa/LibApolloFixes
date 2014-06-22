@@ -19,33 +19,33 @@ end
 
 This library makes Apollo.GetAddon work for the following addons:
 
+* ArenaTeamRegister
+* ChallengeLog
+* ChallengeRewardPanel
+* CircleRegistration
+* DecorPreview
+* FloatTextPanel
+* GroupDisplayOptions
+* HousingDatachron
+* HousingLandscape
+* HousingListWindow
+* HousingRemodel
+* HUDInteract
 * ImprovedSalvage
 * ItemPreview
+* Mannequin
+* PathExplorerMissions
+* PathScientistCustomize
+* PathScientistExperimentation
+* PathSettlerMissions
+* PathSoldierMissions
+* PlugPreview
 * TradeskillContainer
 * TradeskillSchematics
 * TradeskillTalents
-* WarpartyRegister
-* WarpartyBattle
 * TutorialPrompts
-* PathSoldierMissions
-* PathSettlerMissions
-* PathScientistExperimentation
-* PathScientistCustomize
-* PathExplorerMissions
-* HUDInteract
-* HousingRemodel
-* HousingLandscape
-* HousingListWindow
-* DecorPreview
-* PlugPreview
-* Mannequin
-* HousingDatachron
-* CircleRegistration
-* GroupDisplayOptions
-* FloatTextPanel
-* ChallengeLog
-* ChallengeRewardPanel
-* ArenaTeamRegister
+* WarpartyBattle
+* WarpartyRegister
 
 ###Caveat
 
