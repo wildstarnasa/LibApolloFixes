@@ -17,7 +17,7 @@ end
 
 ##Apollo.GetAddon extension
 
-This library makes Apollo.GetAddon work for the following addons:
+This library makes `Apollo.GetAddon` work for the following addons:
 
 | Addon Name | Purpose |
 |------------|---------|
@@ -41,7 +41,7 @@ This library makes Apollo.GetAddon work for the following addons:
 |PathScientistExperimentation|Scientiest Experimentation|
 |PathSettlerMissions|Settler Path Missions|
 |PathSoldierMissions|Soldier Path Missions|
-|PlugPreview|Previw of Housing Plugs|
+|PlugPreview|Preview of Housing Plugs|
 |TradeskillContainer|Holds the 3 Tradeskill Forms|
 |TradeskillSchematics|Tradeskill Schematics|
 |TradeskillTalents|Tradeskill Talents|
@@ -53,6 +53,6 @@ This library makes Apollo.GetAddon work for the following addons:
 
 GetAddon may not return anything for one of the above addons if it has not initialized yet.
 
-Example: TradeskillTalents will be accessible until the GenericEvent_InitializeTradeskillTalents event has fired.
+Example: TradeskillTalents will be accessible until the `GenericEvent_InitializeTradeskillTalents` event has fired.
 
 Once accessible though you can get a reference to it anytime.
