@@ -55,4 +55,7 @@ GetAddon may not return anything for one of the above addons if it has not initi
 
 Example: TradeskillTalents will be accessible until the `GenericEvent_InitializeTradeskillTalents` event has fired.
 
-Once accessible though you can get a reference to it anytime.
+
+However you *can* register for the "ObscuredAddonVisible" event which will be fired when addons can be retrieved with GetAddon.
+
+The event will contain the name of the addon as the only argument.

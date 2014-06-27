@@ -1,4 +1,4 @@
-local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 1
+local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 2
 -- Get a reference to the package information if any
 local APkg = Apollo.GetPackage(MAJOR)
 -- If there was an older version loaded we need to see if this is newer
@@ -116,12 +116,16 @@ local function HookedLoadForm(...)
 	if Lib.tObscuredAddons[strForm] then
 		-- Pull local variables from 3 levels up
 		local tDebugLocals = DebugLocals(3)
+		local strAddonName = Lib.tObscuredAddons[strForm]
 		-- Self at this point is the addon we are looking for so save that!
-		Lib.tFoundAddons[Lib.tObscuredAddons[strForm]] = tDebugLocals.self
+		Lib.tFoundAddons[strAddonName] = tDebugLocals.self
 		-- Since we can now lookup this addon, lets add it to GetAddons()
 		table.insert(tAddonList, Lib.tObscuredAddons[strForm])
 		-- Found it so stop looking for this addon
 		Lib.tObscuredAddons[strForm] = nil
+
+		-- Send Notification
+		Event_FireGenericEvent("ObscuredAddonVisible", strAddonName)
 
 		-- If this was the last thing we're looking for remove the hook
 		if not next(Lib.tObscuredAddons) then
