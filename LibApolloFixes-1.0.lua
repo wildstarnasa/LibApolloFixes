@@ -1,8 +1,8 @@
-local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 2
+local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 3
 -- Get a reference to the package information if any
 local APkg = Apollo.GetPackage(MAJOR)
 -- If there was an older version loaded we need to see if this is newer
-if APkg and (APkg.nVersion > 0) then
+if APkg and (APkg.nVersion or 0) >= MINOR then
 	return -- no upgrades
 end
 -- Set a reference to the actual package or create an empty table
@@ -17,8 +17,8 @@ local tAddonList = {}
 
 -- Use already stored original LoadForm in case of upgrade or get reference to the original LoadForm
 Lib.fnOldLoadForm = Lib.fnOldLoadForm or Apollo.LoadForm
--- This is the number of elements in the table below it, used to determine if XML has been read in GetAddons()
-local nNumObscured = 27
+-- This will be the number of obscured addons, used to determine if XML has been read in GetAddons()
+local nNumObscured = 0
 -- This list should be comprehensive as of 1.0.8.6745
 -- Format is: ["FormName"] = "AddonName"
 Lib.tObscuredAddons = Lib.tObscuredAddons or {
@@ -50,6 +50,10 @@ Lib.tObscuredAddons = Lib.tObscuredAddons or {
 	["ChallengeRewardPanelForm"] = "ChallengeRewardPanel",
 	["ArenaTeamRegistrationForm"] = "ArenaTeamRegister",
 }
+-- Determine number of obscured addons
+for k,v in pairs(Lib.tObscuredAddons) do
+	nNumObscured = nNumObscured + 1
+end
 
 -- Use already stored original GetAddon in case of upgrade or get reference to the original GetAddon
 Lib.fnOldGetAddon = Lib.fnOldGetAddon or Apollo.GetAddon
