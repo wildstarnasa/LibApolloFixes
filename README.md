@@ -71,7 +71,7 @@ This library makes `Apollo.GetAddon` work for the following addons:
 
 GetAddon may not return anything for one of the above addons if it has not initialized yet.
 
-Example: TradeskillTalents will be accessible until the `GenericEvent_InitializeTradeskillTalents` event has fired.
+Example: TradeskillTalents will not be accessible until the `GenericEvent_InitializeTradeskillTalents` event has fired.
 
 
 However you *can* register for the "ObscuredAddonVisible" event which will be fired when addons can be retrieved with GetAddon.
