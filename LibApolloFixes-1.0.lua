@@ -155,7 +155,7 @@ local function HookedLoadForm(...)
 	-- Arg 2 is the Form Name
 	local strForm = select(2, ...)
 	if Lib.tObscuredAddons[strForm] then
-		-- Pull local variables from 3 levels up
+		-- Pull local variables from 3 levels up (DebugLocals, HookedLoadForm, <What We Want>)
 		local tDebugLocals = DebugLocals(3)
 		local strAddonName = Lib.tObscuredAddons[strForm]
 		-- Self at this point is the addon we are looking for so save that!
