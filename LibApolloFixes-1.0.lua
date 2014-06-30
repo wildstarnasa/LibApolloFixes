@@ -99,8 +99,19 @@ end
 local function GetReplacement(strAddonName)
 	-- Table of addons that replaced strAddonName
 	local tReplacements = {}
+	local tAddons
+
 	-- If GetAddons is our internal function we can use the internal list
-	local tAddons = Apollo.GetAddons == GetAddons and tAddonList or Apollo.GetAddons()
+	if Apollo.GetAddons == GetAddons then
+		if #tAddonList <= nNumObscured then
+			GetAddons()
+		end
+		tAddons = tAddonList
+	else
+		-- Assumption: If Carbine provides a GetAddons it returns strings
+		tAddons = Apollo.GetAddons()
+	end
+
 	for _, strAddon in ipairs(tAddons) do
 		local tAddonInfo = Apollo.GetAddonInfo(strAddon)
 		if tAddonInfo and tAddonInfo.bRunning and (#tAddonInfo.arReplacedAddons > 0) then
