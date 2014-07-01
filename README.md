@@ -22,14 +22,35 @@ end
 This returns a table containing all addons that have indicated they replace the addon named strAddonName or an empty table if not replaced
 
 ###Usage
+Example use for determining what to do when an addon (Chatlog in this example) is replaced:
+
 ```lua
-local tReplacements = Apollo.GetReplacement("Vendor")
-if #tReplacements > 0 then
-  for _,v in ipairs(tReplacements) do
-    Print("Replaced by: " .. v)
-  end
-else
-  Print("Not Replaced!")
+local tReplacementAddons = {
+    "ChatLogReplacer",
+    "ImprovedImprovedChatLog",
+    "ChatLogTheBestVersion",
+}
+
+function MyAddon:OnDependencyError(strDep, strError)
+    if strDep == "ChatLog" then
+        local tReplacements = Apollo.GetReplacement(strDep)
+        if #tReplacements ~= 1 or not tReplacementAddons[tReplacements[1]] then
+            return false
+        end
+        -- Do something specific to whatever replaced ChatLog
+        return true
+    end
+    return false
+end
+
+function MyAddon:Init()
+    local bHasConfigureFunction = false
+    local strConfigureButtonText = ""
+    local tDependencies = {
+        "ChatLog"
+        -- "UnitOrPackageName",
+    }
+    Apollo.RegisterAddon(self, bHasConfigureButton, strConfigureButtonText, tDependencies)
 end
 ```
 
