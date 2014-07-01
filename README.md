@@ -19,12 +19,12 @@ end
 
 ##Apollo.GetReplacement(strAddonName)
 
-This returns a table containing all addons that have indicated they replace the addon named strAddonName or nil if not replaced
+This returns a table containing all addons that have indicated they replace the addon named strAddonName or an empty table if not replaced
 
 ###Usage
 ```lua
 local tReplacements = Apollo.GetReplacement("Vendor")
-if tReplacements then
+if #tReplacements > 0 then
   for _,v in ipairs(tReplacements) do
     Print("Replaced by: " .. v)
   end
