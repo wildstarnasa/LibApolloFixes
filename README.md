@@ -1,17 +1,35 @@
 LibApolloFixes
 ==============
 
-Library that exposes obscured Addons and adds a GetAddons() method to Apollo.
+Library that exposes obscured Addons and adds two methods to Apollo:
+* GetAddons()
+* GetReplacement(strAddonName)
 
 ##Apollo.GetAddons
 
-This returns list of all addons that Wildstar is aware of.  It does not know their state (loaded or not)
+This returns a list of all addons that Wildstar is aware of.  It does not know their state (loaded or not)
 
 ###Usage
 ```lua
 local tAddonNames = Apollo.GetAddons()
 for k,v in ipairs(tAddonNames) do
     Print(v)
+end
+```
+
+##Apollo.GetReplacement(strAddonName)
+
+This returns a table containing all addons that have indicated they replace the addon named strAddonName or nil if not replaced
+
+###Usage
+```lua
+local tReplacements = Apollo.GetReplacement("Vendor")
+if tReplacements then
+  for _,v in ipairs(tReplacements) do
+    Print("Replaced by: " .. v)
+  end
+else
+  Print("Not Replaced!")
 end
 ```
 
@@ -53,7 +71,7 @@ This library makes `Apollo.GetAddon` work for the following addons:
 
 GetAddon may not return anything for one of the above addons if it has not initialized yet.
 
-Example: TradeskillTalents will be accessible until the `GenericEvent_InitializeTradeskillTalents` event has fired.
+Example: TradeskillTalents will not be accessible until the `GenericEvent_InitializeTradeskillTalents` event has fired.
 
 
 However you *can* register for the "ObscuredAddonVisible" event which will be fired when addons can be retrieved with GetAddon.
