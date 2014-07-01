@@ -1,4 +1,4 @@
-local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 4
+local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 5
 -- Get a reference to the package information if any
 local APkg = Apollo.GetPackage(MAJOR)
 -- If there was an older version loaded we need to see if this is newer
@@ -123,7 +123,7 @@ local function GetReplacement(strAddonName)
 			end
 		end
 	end
-	return #tReplacements > 0 and tReplacements or nil
+	return tReplacements
 end
 
 local function GetAddon(strAddonName)
