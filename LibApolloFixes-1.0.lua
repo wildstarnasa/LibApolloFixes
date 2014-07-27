@@ -1,4 +1,4 @@
-local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 6
+local MAJOR, MINOR = "Lib:ApolloFixes-1.0", 7
 -- Get a reference to the package information if any
 local APkg = Apollo.GetPackage(MAJOR)
 -- If there was an older version loaded we need to see if this is newer
@@ -184,13 +184,11 @@ local function HookedLoadForm(...)
     -- Return the saved functions result
     return Lib.fnOldLoadForm(...)
 end
-Apollo.LoadForm = HookedLoadForm
 
-function Lib:OnLoad()
-    -- If Carbine ever adds GetAddons to Apollo lets not use ours.
-    Apollo.GetAddons = Apollo.GetAddons or GetAddons
-    Apollo.GetReplacement = Apollo.GetReplacement or GetReplacement
-    Apollo.GetAddon = GetAddon
-end
+-- Setup Hooks
+Apollo.LoadForm       = HookedLoadForm
+Apollo.GetAddons      = GetAddons
+Apollo.GetReplacement = GetReplacement
+Apollo.GetAddon       = GetAddon
 
 Apollo.RegisterPackage(Lib, MAJOR, MINOR, {})
